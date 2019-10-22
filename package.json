@@ -7,8 +7,10 @@
     "clean:cache": "rm -rf .cache",
     "clean-build": "rm -rf build",
     "dev": "npm run clean && parcel src/index.html --out-dir build_dev/",
-    "build": "npm run clean-build && parcel build --no-source-maps src/*.html --out-dir build/",
-    "deploy": "cp build/scripts*.js dist/loom.umd.js"
+    "build": "npm run clean-build && parcel build src/*.html --out-dir build/",
+    "build:product": "npm run clean-build && parcel build --no-source-maps src/*.html --out-dir build/",
+    "deploy": "cp build/scripts*.map dist/loom.umd.js.map && cp build/scripts*.js dist/loom.umd.js",
+    "deploy:product": "cp build/scripts*.js dist/loom.umd.min.js"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -27,6 +29,6 @@
     "npm": "^6.10.3"
   },
   "dependencies": {
-    "loom-js": "^1.55.0"
+    "loom-js": "^1.70.1"
   }
 }
